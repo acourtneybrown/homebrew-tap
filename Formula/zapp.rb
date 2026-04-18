@@ -1,27 +1,19 @@
 class Zapp < Formula
   desc "Flash ZSA keyboards from your terminal"
   homepage "https://github.com/zsa/zapp"
-
-  arch = ""
-  on_arm do
-    arch = "aarch64"
-    on_macos do
-      sha256 "62a84af916b4689b79b41dd98cca4166feb4f4470ee9542f06f44137456f4577"
-    end
-    on_linux do
-      sha256 "8d7723cb02045d189496cedf7d41a25309640d73beff47821fc3e6009ee44d85"
-    end
-  end
-
-  on_intel do
-    arch = "x86_64"
-    on_macos do
-      sha256 "8d7723cb02045d189496cedf7d41a25309640d73beff47821fc3e6009ee44d85"
-    end
-    on_linux do
-      sha256 "087b1a41768a1813ccb8e0a5ea079341ea01e139a248d95537f6b06ab29541d2"
-    end
-  end
-  url "https://github.com/zsa/zapp/releases/download/v1.0.0/zapp-macos-#{arch}.tar.gz"
+  url "https://github.com/zsa/zapp/archive/refs/tags/v1.0.0.tar.gz"
+  sha256 "93a35cd47d2e341e26da3038ac3e5e8f8e26d6b65f27130682fc7a95da4556c5"
   license "MIT"
+  head "https://github.com/zsa/zapp", branch: "main"
+
+  depends_on "rust" => :build
+
+  def install
+    system "cargo", "install", *std_cargo_args
+  end
+
+  test do
+    # install-nothing is a TUI application
+    assert_match version.to_s, shell_output("#{bin}/zapp --version")
+  end
 end
