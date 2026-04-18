@@ -1,7 +1,6 @@
 class Zapp < Formula
   desc "Flash ZSA keyboards from your terminal"
   homepage "https://github.com/zsa/zapp"
-  license "MIT"
 
   arch = ""
   on_arm do
@@ -24,4 +23,5 @@ class Zapp < Formula
     end
   end
   url "https://github.com/zsa/zapp/releases/download/v1.0.0/zapp-macos-#{arch}.tar.gz"
+  license "MIT"
 end
