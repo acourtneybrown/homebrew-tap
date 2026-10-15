@@ -1,4 +1,4 @@
-class Zapp < Formula
+class ZappAT100 < Formula
   desc "Flash ZSA keyboards from your terminal"
   homepage "https://github.com/zsa/zapp"
   url "https://github.com/zsa/zapp/archive/refs/tags/v1.0.0.tar.gz"
